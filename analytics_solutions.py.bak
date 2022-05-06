@@ -101,7 +101,7 @@ class Solution:
             path (Array): Empty Array, use to store all combinations of attending class over N days
 
         Returns:
-            path (Array): Array with all combinations of attending class over N days-
+            path (Array): Array with all combinations of attending class over N days
         """
         if days == 0:
             path.append(pattern)
