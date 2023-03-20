@@ -43,10 +43,11 @@ class Solution:
             len(path) - count (int): The number of ways to attend classes over N days.
         """
         n = len(path)
-        count = 0
-        for i in range(n):
-            if self.consec_absent_allowed_flag(path[i], not_allowed_pattern):
-                count += 1
+        count = sum(
+            1
+            for i in range(n)
+            if self.consec_absent_allowed_flag(path[i], not_allowed_pattern)
+        )
         return len(path) - count
 
     def probMissGraduation(self, path, not_allowed_pattern):
@@ -60,14 +61,10 @@ class Solution:
         Returns:
             count (int): The probability that you will miss your graduation ceremony
         """
-        count = 0
         for i in path:
             if self.consec_absent_allowed_flag(i, not_allowed_pattern):
                 path.remove(i)
-        for i in path:
-            if i[-1] == 'A':
-                count += 1
-        return count
+        return sum(i[-1] == 'A' for i in path)
 
     def consec_absent_allowed_flag(self, strng, not_allowed_pattern):
         """
